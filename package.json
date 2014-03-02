@@ -1,0 +1,44 @@
+{
+    "name": "gulp-autopolyfiller",
+    "version": "1.0.1",
+    "description": "Autopolyfiller plugin for Gulp.",
+    "keywords": [
+        "gulpplugin",
+        "autopolyfiller",
+        "polyfills",
+        "polyfill"
+    ],
+    "author": {
+        "name": "Mikhail Davydov",
+        "email": "",
+        "url": "https://github.com/azproduction"
+    },
+    "repository": "azproduction/gulp-autopolyfiller",
+    "scripts": {
+        "test" : "make validate",
+        "lint": "make lint",
+        "coverage": "make coverage",
+        "clean": "make clean"
+    },
+    "dependencies": {
+        "through": "*",
+        "gulp-util": "~2.2.0",
+        "autopolyfiller": "~1.0.8"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "coveralls": "*",
+        "istanbul": "*",
+        "event-stream": "*",
+        "should": "~2.1.0",
+        "jshint": "2.1.3",
+        "jscs": "1.0.0",
+        "chai": "*",
+        "mocha-istanbul": "*"
+    },
+    "engines": {
+        "node": ">=0.8.0",
+        "npm": ">=1.2.10"
+    },
+    "license": "MIT"
+}
