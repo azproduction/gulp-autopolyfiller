@@ -74,5 +74,5 @@ gulp.src('./your/js/**/*.js')
 [coveralls-url]: https://coveralls.io/r/azproduction/gulp-autopolyfiller
 [coveralls-image]: https://coveralls.io/repos/azproduction/gulp-autopolyfiller/badge.png
 
-[depstat-url]: https://gemnasium.com/azproduction/grunt-autopolyfiller
-[depstat-image]: https://gemnasium.com/azproduction/grunt-autopolyfiller.png
+[depstat-url]: https://gemnasium.com/azproduction/gulp-autopolyfiller
+[depstat-image]: https://gemnasium.com/azproduction/gulp-autopolyfiller.png
