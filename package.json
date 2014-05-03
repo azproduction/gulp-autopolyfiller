@@ -1,6 +1,6 @@
 {
     "name": "gulp-autopolyfiller",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Autopolyfiller plugin for Gulp.",
     "homepage": "https://github.com/azproduction/gulp-autopolyfiller",
     "repository": "git://github.com/azproduction/gulp-autopolyfiller.git",
@@ -25,7 +25,7 @@
     "dependencies": {
         "through": "~2.3.4",
         "gulp-util": "~2.2.14",
-        "autopolyfiller": "~1.0.8"
+        "autopolyfiller": "1.1.x"
     },
     "devDependencies": {
         "mocha": "*",

@@ -1,5 +1,5 @@
 /*global describe, it, beforeEach, afterEach*/
-/*jshint expr:true, maxstatements:13*/
+/*jshint expr:true, maxstatements:50*/
 
 var autopolyfiller = require('..'),
     expect = require('chai').expect,
@@ -134,6 +134,84 @@ describe('gulp-autopolyfiller', function() {
             expect(Buffer.isBuffer(newFile.contents)).to.equal(true);
             done();
         });
+        stream.write(fakeFile);
+        stream.write(fakeFile2);
+        stream.end();
+    });
+
+    it('includes extra polyfills in build result', function(done) {
+        var stream = autopolyfiller('test.js', {
+            include: ['Promise']
+        });
+
+        var fakeFile = new File({
+            cwd: '/home/autopolyfiller/',
+            base: '/home/autopolyfiller/test',
+            path: '/home/autopolyfiller/test/String.prototype.trim.js',
+            contents: new Buffer('"".trim();')
+        });
+
+        stream.on('data', function (newFile) {
+            expect(newFile).to.exists;
+            expect(newFile.path).to.exists;
+            expect(newFile.relative).to.exists;
+            expect(newFile.contents).to.exists;
+
+            var newFilePath = path.resolve(newFile.path);
+            var expectedFilePath = path.resolve('/home/autopolyfiller/test/test.js');
+            expect(newFilePath).to.equal(expectedFilePath);
+
+            expect(newFile.relative).to.equal('test.js');
+
+            var polyfills = String(newFile.contents);
+            expect(polyfills).to.match(/String\.prototype\.trim/);
+            expect(polyfills).to.match(/Promise/);
+
+            expect(Buffer.isBuffer(newFile.contents)).to.equal(true);
+            done();
+        });
+        stream.write(fakeFile);
+        stream.end();
+    });
+
+    it('excludes polyfills from build result', function(done) {
+        var stream = autopolyfiller('test.js', {
+            exclude: ['String.prototype.trim']
+        });
+
+        var fakeFile = new File({
+            cwd: '/home/autopolyfiller/',
+            base: '/home/autopolyfiller/test',
+            path: '/home/autopolyfiller/test/String.prototype.trim.js',
+            contents: new Buffer('"".trim();')
+        });
+
+        var fakeFile2 = new File({
+            cwd: '/home/autopolyfiller/',
+            base: '/home/autopolyfiller/test',
+            path: '/home/autopolyfiller/test/Promise.js',
+            contents: new Buffer('new Promise();')
+        });
+
+        stream.on('data', function (newFile) {
+            expect(newFile).to.exists;
+            expect(newFile.path).to.exists;
+            expect(newFile.relative).to.exists;
+            expect(newFile.contents).to.exists;
+
+            var newFilePath = path.resolve(newFile.path);
+            var expectedFilePath = path.resolve('/home/autopolyfiller/test/test.js');
+            expect(newFilePath).to.equal(expectedFilePath);
+
+            expect(newFile.relative).to.equal('test.js');
+
+            var polyfills = String(newFile.contents);
+            expect(polyfills).to.not.match(/String\.prototype\.trim/);
+
+            expect(Buffer.isBuffer(newFile.contents)).to.equal(true);
+            done();
+        });
+
         stream.write(fakeFile);
         stream.write(fakeFile2);
         stream.end();

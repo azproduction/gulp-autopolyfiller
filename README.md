@@ -30,6 +30,14 @@ gulp.src('./your/js/**/*.js')
 Type: `Array`
 Default value: `[]` - all browsers
 
+#### options.include
+Type: `Array`
+Default value: `[]` - list of extra polyfills to add
+
+#### options.exclude
+Type: `Array`
+Default value: `[]` - list of polyfills to remove
+
 List of target browsers. Autopolyfiller uses Autoprefixer-style browsers format.
 See [Browsers format](https://github.com/ai/autoprefixer#browsers) for details.
 
@@ -57,6 +65,18 @@ var autopolyfiller = require('gulp-autopolyfiller');
 gulp.src('./your/js/**/*.js')
 	.pipe(autopolyfiller('result_polyfill_file.js', {
 		browsers: require('autoprefixer').default
+	}))
+	.pipe(gulp.dest('./dist'));
+```
+
+#### Removig polyfills
+
+```js
+var autopolyfiller = require('gulp-autopolyfiller');
+
+gulp.src('./your/js/**/*.js')
+	.pipe(autopolyfiller('polyfills_without_promises.js', {
+		exclude: ['Promise']
 	}))
 	.pipe(gulp.dest('./dist'));
 ```
