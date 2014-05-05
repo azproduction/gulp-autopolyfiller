@@ -26,7 +26,7 @@ gulp.task('autopolyfiller', function () {
 
 ## API
 
-### autopolyfiller(options)
+### autopolyfiller(fileName, options)
 
 #### options.browsers
 Type: `Array`
