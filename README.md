@@ -17,9 +17,11 @@ Then, add it to your `gulpfile.js`:
 ```js
 var autopolyfiller = require('gulp-autopolyfiller');
 
-gulp.src('./your/js/**/*.js')
-	.pipe(autopolyfiller('result_polyfill_file.js'))
-	.pipe(gulp.dest('./dist'));
+gulp.task('autopolyfiller', function () {
+    return gulp.src('./lib/**/*.js')
+        .pipe(autopolyfiller('result_polyfill_file.js'))
+        .pipe(gulp.dest('./dist'));
+});
 ```
 
 ## API
