@@ -1,0 +1,14 @@
+{
+  "name": "autopolyfiller-uglify",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "devDependencies": {
+    "event-stream": "^3.1.7",
+    "gulp": "^3.8.6",
+    "gulp-autopolyfiller": "^1.1.0",
+    "gulp-concat": "^2.3.4",
+    "gulp-order": "^1.1.1",
+    "gulp-uglify": "^0.3.1"
+  }
+}
