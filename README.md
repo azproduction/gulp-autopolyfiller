@@ -4,6 +4,8 @@
 
 Autopolyfiller - Precise polyfills. Automatic and minimal polyfills for your code.
 
+It accepts multiply js files and returns a file with all required polyfills. **Please note**: all input files will be dropped from the output stream of autopolyfiller. To concat polyfills with all your js files please refer to examples.
+
 ## Usage
 
 First, install `gulp-autopolyfiller` as a development dependency:
