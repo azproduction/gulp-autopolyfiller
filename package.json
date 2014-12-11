@@ -25,7 +25,7 @@
     "dependencies": {
         "through": "~2.3.4",
         "gulp-util": "~2.2.14",
-        "autopolyfiller": "1.1.x"
+        "autopolyfiller": "1.4.x"
     },
     "devDependencies": {
         "mocha": "*",
