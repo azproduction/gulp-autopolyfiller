@@ -217,4 +217,40 @@ describe('gulp-autopolyfiller', function() {
         stream.end();
     });
 
+    it('can use a custom parser', function(done) {
+        var stream = autopolyfiller('test.js', {
+            parser: 'esprima-fb',
+            parser_options: {}
+        });
+
+        var fakeFile = new File({
+            cwd: '/home/autopolyfiller/',
+            base: '/home/autopolyfiller/test',
+            path: '/home/autopolyfiller/test/String.prototype.trim.js',
+            contents: new Buffer('"".trim();')
+        });
+
+        stream.on('data', function (newFile) {
+            expect(newFile).to.exists;
+            expect(newFile.path).to.exists;
+            expect(newFile.relative).to.exists;
+            expect(newFile.contents).to.exists;
+
+            var newFilePath = path.resolve(newFile.path);
+            var expectedFilePath = path.resolve('/home/autopolyfiller/test/test.js');
+            expect(newFilePath).to.equal(expectedFilePath);
+
+            expect(newFile.relative).to.equal('test.js');
+
+            var polyfills = String(newFile.contents);
+            expect(polyfills).to.match(/String\.prototype\.trim/);
+
+            expect(Buffer.isBuffer(newFile.contents)).to.equal(true);
+            done();
+        });
+
+        stream.write(fakeFile);
+        stream.end();
+    });
+
 });
