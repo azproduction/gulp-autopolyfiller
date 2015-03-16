@@ -1,6 +1,6 @@
 {
   "name": "gulp-autopolyfiller",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Autopolyfiller plugin for Gulp.",
   "homepage": "https://github.com/azproduction/gulp-autopolyfiller",
   "repository": "git://github.com/azproduction/gulp-autopolyfiller.git",
